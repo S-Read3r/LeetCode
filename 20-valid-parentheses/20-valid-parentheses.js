@@ -1,30 +1,24 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function(str) {
-const res = [];
-
-//I will use a for loop to iterate through the given sing
-for(let x in str) {
-
-    //I will use charAt() to pull a character at location(x) from the given string, then use a switch statement which is more efficient than using many else statements. 
-    let pulldChar = str.charAt(x);
-    switch(pulldChar) {
-        case '[': res.push(']');
-            break;
-        case '(': res.push(')');
-            break;
-        case '{': res.push('}');
-            break;
-         default:
-             if (pulldChar !== res.pop()) {
-                 return false
-             }
+ var isValid = function(s) {   
+    const stack = [];
+    
+    for (let i = 0 ; i < s.length ; i++) {
+        let c = s.charAt(i);
+        switch(c) {
+            case '(': stack.push(')');
+                break;
+            case '[': stack.push(']');
+                break;
+            case '{': stack.push('}');
+                break;
+            default:
+                if (c !== stack.pop()) {
+                    return false;
+                }
+        }
     }
-}
-
-return res.length === 0
+    
+    return stack.length === 0;
 };
+	
+	console.log(isValid("(]"))
 
-console.log(isValid("{[()]}"))
