@@ -16,7 +16,7 @@ var twoSum = function(nums, target) {
         // Subtracting cVal from target will reveal the missing number, and then confirm it's existance in the list.
         let reVal = target - cVal;
         
-        // I must ask map if it `has` requireValue(reVal)
+        // I must ask map if it `has` requiredValue(reVal)
         if(map.has(reVal)) {
         
         //Now that the iteration has found the missing number, I (r) their indexs
